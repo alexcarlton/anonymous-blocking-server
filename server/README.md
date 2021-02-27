@@ -98,3 +98,21 @@ Delete a schedule for the authorized user.
 ```
 DELETE /schedule/<SCHEDULE_ID>
 ```
+### Blocked services
+#### Get blocked services
+Get information on services that are currently blocked for the authorised user, and whether they are blocked by a `schedule` or `session`
+```
+GET /blocked
+```
+##### Example Response
+```JSON
+{
+  "data": {
+    "services": ["facebook", "reddit"],
+    "blocker": {
+      "type": "schedule",
+      "id": 123
+    }
+  }
+}
+```
