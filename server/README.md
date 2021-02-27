@@ -19,7 +19,13 @@ The JWT Token should contain the following payload:
 ```
 ### Sessions
 #### Start Session
+The following request will start a session for the authorised user. If an `endDate` parameter is sent the session will run until that time, else the session will run until stopped.
+
+Starting a new session whilst an existing session is running will stop the running session before starting the new session.
 ```
 POST /session
 ```
-##### Request
+| QUERY PARAMETER | TYPE | REQUIRED | EXAMPLE |
+|---|---|---|---|
+| endDate | ISO string | false | '2021-02-27T09:00:00.000+00:00' |
+| services | Array of service strings | true | ['facebook', 'reddit'] |
