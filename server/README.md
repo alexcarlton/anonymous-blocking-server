@@ -9,7 +9,7 @@ To make an authorised request to the server, include the following header:
 
 | HEADER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
-| Authorization | string | true | 'Bearer <JWT_TOKEN>' |
+| Authorization | string | true | `'Bearer <JWT_TOKEN>'` |
 
 The JWT Token should contain the following payload:
 ```JSON
@@ -28,7 +28,7 @@ POST /session
 ```
 | PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
-| endDate | ISO string | false | '2021-02-27T09:00:00.000+00:00' |
+| endDate | ISO string | false | `'2021-02-27T09:00:00.000+00:00'` |
 | services | Array of service strings | true | `['facebook', 'reddit']` |
 
 #### Stop Session
@@ -87,12 +87,12 @@ POST /schedule/<SCHEDULE_ID>
 ```
 | PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
-| name | string | true | 'Morning Focus' |
-| type | string | true | Either 'one-off' OR 'repeated' |
+| name | string | true | `'Morning Focus'` |
+| type | string | true | Either `'one-off'` OR `'repeated'` |
 | services | Array of service strings | true | `['facebook', 'reddit']` |
-| duration | number (minutes) | true | 120 |
-| startDate | ISO String | true if type is 'one-off' | '2021-02-27T09:00:00.000+00:00' |
-| repeats | Array of cron strings | true if type is 'repeated' | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
+| duration | number (minutes) | true | `120` |
+| startDate | ISO String | true if type is `'one-off'` | `'2021-02-27T09:00:00.000+00:00'` |
+| repeats | Array of cron strings | true if type is `'repeated'` | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
 #### Delete a schedule
 Delete a schedule for the authorized user.
 ```
