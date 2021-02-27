@@ -20,7 +20,7 @@ The JWT Token should contain the following payload:
 
 ### Sessions
 #### Start Session
-The following request will start a session for the authorised user. If an `endDate` parameter is sent the session will run until that time, else the session will run until stopped.
+Start a session for the authorised user. If an `endDate` parameter is sent the session will run until that time, else the session will run until stopped.
 
 Starting a new session whilst an existing session is running will stop the running session before starting the new session.
 ```
@@ -32,7 +32,43 @@ POST /session
 | services | Array of service strings | true | ['facebook', 'reddit'] |
 
 #### Stop Session
-The following request will stop the session for the authorised user.
+Stop the session for the authorised user.
 ```
 DELETE /session
+```
+
+### Schedules
+#### Get All Schedules
+Get all the schedules for the authorized user.
+```
+GET /schedules
+```
+##### Example Response
+```JSON
+{
+  "data": {
+    "schedules": [
+      {
+        "id": "123",
+        "name": "Morning Focus",
+        "type": "one-off",
+        "services": ["facebook", "reddit"],
+        "startDate": "2021-02-27T09:00:00.000+00:00",
+        "duration": 120
+      },
+      {
+        "id": "456",
+        "name": "Afternoon Focus",
+        "type": "repeated",
+        "services": ["facebook", "reddit"],
+        "duration": 120,
+        "repeats": [
+          "* * 14 * * 1",
+          "* * 14 * * 3",
+          "* * 14 * * 5"
+        ]
+      }
+    ]
+  }
+}
 ```
