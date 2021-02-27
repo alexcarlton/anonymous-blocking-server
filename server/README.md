@@ -26,10 +26,10 @@ Starting a new session whilst an existing session is running will stop the runni
 ```
 POST /session
 ```
-| QUERY PARAMETER | TYPE | REQUIRED | EXAMPLE |
+| PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
 | endDate | ISO string | false | '2021-02-27T09:00:00.000+00:00' |
-| services | Array of service strings | true | ['facebook', 'reddit'] |
+| services | Array of service strings | true | `['facebook', 'reddit']` |
 
 #### Stop Session
 Stop the session for the authorised user.
@@ -72,3 +72,22 @@ GET /schedules
   }
 }
 ```
+#### Create a schedule
+Create a schedule for the authorized user.
+
+A schedule can be of type `one-off` or `repeated`.
+
+A `one-off` schedule is executed once at `startDate` for `duration` minutes.
+
+A `repeated` schedule is executed for each cron time specified in `repeats` for `duration` minutes.
+```
+POST /schedule/<SCHEDULE_ID>
+```
+| PARAMETER | TYPE | REQUIRED | EXAMPLE |
+|---|---|---|---|
+| name | string | true | 'Morning Focus' |
+| type | string | true | Either 'one-off' OR 'repeated' |
+| services | Array of service strings | true | `['facebook', 'reddit']` |
+| duration | number (minutes) | true | 120 |
+| startDate | ISO String | true if type is 'one-off' | '2021-02-27T09:00:00.000+00:00' |
+| repeats | Array of cron strings | true if type is 'repeated' | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
