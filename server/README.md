@@ -17,6 +17,7 @@ The JWT Token should contain the following payload:
   "id": "ANONYMOUS_UNIQUE_ID"
 }
 ```
+
 ### Sessions
 #### Start Session
 The following request will start a session for the authorised user. If an `endDate` parameter is sent the session will run until that time, else the session will run until stopped.
@@ -29,3 +30,9 @@ POST /session
 |---|---|---|---|
 | endDate | ISO string | false | '2021-02-27T09:00:00.000+00:00' |
 | services | Array of service strings | true | ['facebook', 'reddit'] |
+
+#### Stop Session
+The following request will stop the session for the authorised user.
+```
+DELETE /session
+```
