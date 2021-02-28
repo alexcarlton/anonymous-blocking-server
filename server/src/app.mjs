@@ -9,4 +9,10 @@ app.get("/", (req, res) => {
   res.status(200).send();
 });
 
+app.use((err) => {
+  if (err) {
+    console.log(err);
+  }
+});
+
 export { app };
