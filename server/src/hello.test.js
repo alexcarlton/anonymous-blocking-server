@@ -1,4 +1,4 @@
-import request from "superagent";
+import request from "supertest";
 import { app } from "./app.mjs";
 
 describe("", () => {
