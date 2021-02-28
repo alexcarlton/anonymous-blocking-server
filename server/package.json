@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/server.mjs",
+    "dev": "nodemon -r dotenv/config src/server.mjs",
     "test": "jest"
   },
   "repository": {
