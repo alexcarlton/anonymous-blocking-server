@@ -4,6 +4,9 @@
     "es2021": true,
     "jest/globals": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": ["eslint:recommended", "prettier"],
   "plugins": ["jest"]
 }
