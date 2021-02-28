@@ -116,3 +116,24 @@ GET /blocked
   }
 }
 ```
+## Socket API
+### Emitted Messages
+#### Blocking started
+Message emitted when blocking is started via either a session or a schedule.
+##### Example Message
+```
+MESSAGE 'blocking-started'
+DATA { 
+    blocker: {
+        type: 'session', 
+        id: 123
+    }
+    services: [{ name:  "facebook" }, { name:  "reddit" }]
+}
+```
+#### Blocking ended
+Message emitted when blocking is ended manually or via a schedule.
+##### Example Message
+```
+MESSAGE 'blocking-ended'
+```
