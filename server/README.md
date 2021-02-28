@@ -29,7 +29,7 @@ POST /session
 | PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
 | endDate | ISO string | false | `'2021-02-27T09:00:00.000+00:00'` |
-| services | Array of service strings | true | `['facebook', 'reddit']` |
+| services | Array of service objects | true | `[{ "name":  "facebook" }, { "name":  "reddit" }]` |
 
 #### Stop Session
 Stop the session for the authorised user.
@@ -54,7 +54,7 @@ GET /schedules
         "id": "123",
         "name": "Morning Focus",
         "type": "one-off",
-        "services": ["facebook", "reddit"],
+        "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
         "startDate": "2021-02-27T09:00:00.000+00:00",
         "duration": 120
       },
@@ -62,7 +62,7 @@ GET /schedules
         "id": "456",
         "name": "Afternoon Focus",
         "type": "repeated",
-        "services": ["facebook", "reddit"],
+        "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
         "duration": 120,
         "repeats": [
           "* * 14 * * 1",
@@ -89,7 +89,7 @@ POST /schedule/<SCHEDULE_ID>
 |---|---|---|---|
 | name | string | true | `'Morning Focus'` |
 | type | string | true | Either `'one-off'` OR `'repeated'` |
-| services | Array of service strings | true | `['facebook', 'reddit']` |
+| services | Array of service objects | true | `[{ "name":  "facebook" }, { "name":  "reddit" }]` |
 | duration | number (minutes) | true | `120` |
 | startDate | ISO String | true if type is `'one-off'` | `'2021-02-27T09:00:00.000+00:00'` |
 | repeats | Array of cron strings | true if type is `'repeated'` | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
@@ -108,7 +108,7 @@ GET /blocked
 ```JSON
 {
   "data": {
-    "services": ["facebook", "reddit"],
+    "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
     "blocker": {
       "type": "schedule",
       "id": 123
