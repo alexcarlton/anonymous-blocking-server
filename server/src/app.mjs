@@ -6,7 +6,7 @@ const app = express();
 app.use(authMiddleware);
 
 app.get("/", (req, res) => {
-  res.send("Hello world!");
+  res.status(200).send();
 });
 
 export { app };
