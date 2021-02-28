@@ -56,7 +56,7 @@ describe("startSession", () => {
       .send({ services: incorrectServices })
       .set("Authorization", `Bearer ${token}`);
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(400);
   });
 
   it("should remove the schedule once the endDate is reached", () => {});
