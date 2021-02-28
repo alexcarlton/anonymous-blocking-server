@@ -1,5 +1,6 @@
 module.exports = {
-  "transform": {
+  transform: {
     "^.+\\.m?jsx?$": "babel-jest"
   },
+  setupFiles: ["dotenv/config"],
 }
