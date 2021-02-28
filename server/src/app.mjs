@@ -3,6 +3,8 @@ import { authMiddleware } from "./middlewares/authMiddleware.mjs";
 import { startSession } from "./handlers/sessions/startSession.mjs";
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use(authMiddleware);
 
