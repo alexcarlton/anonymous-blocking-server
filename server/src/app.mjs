@@ -1,4 +1,5 @@
 import express from "express";
+import { body } from "express-validator";
 import { authMiddleware } from "./middlewares/authMiddleware.mjs";
 import { startSession } from "./handlers/sessions/startSession.mjs";
 
@@ -12,7 +13,12 @@ app.get("/", (req, res) => {
   res.status(200).send();
 });
 
-app.post("/session", startSession);
+app.post(
+  "/session",
+  body("endDate").isISO8601(),
+  body("services").isArray(),
+  startSession
+);
 
 app.use((err) => {
   if (err) {
