@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/alexcarlton/anonymous-blocking-task/issues"
   },
-  "homepage": "https://github.com/alexcarlton/anonymous-blocking-task#readme"
+  "homepage": "https://github.com/alexcarlton/anonymous-blocking-task#readme",
+  "engines": {
+    "node": ">=14.16.0"
+  }
 }
