@@ -90,7 +90,7 @@ POST /schedules/<SCHEDULE_ID>
 | services | Array of service objects | true | `[{ "name":  "facebook" }, { "name":  "reddit" }]` |
 | duration | number (minutes) | true | `120` |
 | startDate | ISO String | true if type is `'one-off'` | `'2021-02-27T09:00:00.000+00:00'` |
-| repeats | Array of cron strings | true if type is `'repeated'` | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
+| repeats | Array of cron strings ([documentation](https://github.com/node-schedule/node-schedule#cron-style-scheduling)) | true if type is `'repeated'` | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
 #### Delete a schedule
 Delete a schedule for the authorized user.
 ```
