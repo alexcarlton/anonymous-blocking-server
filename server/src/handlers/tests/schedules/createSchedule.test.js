@@ -1,7 +1,58 @@
+import jwt from "jsonwebtoken";
+import request from "supertest";
+import { app } from "../../../app.mjs";
+import { data } from "../../../database/data.mjs";
+
 describe("createSchedule", () => {
-  it("should add a schedule to the database", () => {});
+  const userId = "123";
 
-  it("should return a 400 if the request is not valid", () => {});
+  it("should add a schedule to the database", async () => {
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
 
-  it("should setup the schedule start and end dates", () => {});
+    const schedule = {
+      name: "Morning Focus",
+      type: "repeated",
+      services: [{ name: "facebook" }, { name: "reddit" }],
+      duration: 120,
+      repeats: ["* * 14 * * 1", "* * 14 * * 3"],
+    };
+
+    const scheduleId = "1";
+
+    const response = await request(app)
+      .post(`/schedules/${scheduleId}`)
+      .send(schedule)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+
+    expect(data.schedules.byUserId[userId]).toEqual({
+      ...schedule,
+      isActive: false,
+    });
+  });
+
+  it("should return a 400 if the request is not valid", async () => {
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
+
+    const schedule = {
+      name: "Morning Focus",
+      type: "repeated",
+      services: ["facebook", "reddit"],
+      duration: 120,
+      repeats: ["* * 14 * * 1", "* * 14 * * 3"],
+    };
+
+    const scheduleId = "1";
+
+    const response = await request(app)
+      .post(`/schedules/${scheduleId}`)
+      .send(schedule)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(400);
+  });
+
+  it("should setup the schedule start and end dates (repeated)", () => {});
+  it("should setup the schedule start and end dates (one-off)", () => {});
 });

@@ -81,7 +81,7 @@ A `one-off` schedule is executed once at `startDate` for `duration` minutes.
 
 A `repeated` schedule is executed for each cron time specified in `repeats` for `duration` minutes.
 ```
-POST /schedule/<SCHEDULE_ID>
+POST /schedules/<SCHEDULE_ID>
 ```
 | PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
@@ -94,7 +94,7 @@ POST /schedule/<SCHEDULE_ID>
 #### Delete a schedule
 Delete a schedule for the authorized user.
 ```
-DELETE /schedule/<SCHEDULE_ID>
+DELETE /schedules/<SCHEDULE_ID>
 ```
 ### Blocked services
 #### Get blocked services
