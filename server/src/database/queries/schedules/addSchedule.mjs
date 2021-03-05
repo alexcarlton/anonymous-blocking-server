@@ -18,7 +18,6 @@ const startSchedule = ({ scheduleId, userId, duration }) => {
 };
 
 const processScheduleTime = ({ scheduleId, userId, start, duration }) => {
-  console.log("process", scheduleId, userId, start, duration);
   return scheduler.scheduleJob(start, () =>
     startSchedule({
       scheduleId,
