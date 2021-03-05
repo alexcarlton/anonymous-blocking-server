@@ -33,8 +33,6 @@ POST /session
 
 #### Stop Session
 Stop the session for the authorised user.
-
-Stopping a session while a schedule is running will also stop the running schedule.
 ```
 DELETE /session
 ```
