@@ -81,7 +81,7 @@ A `one-off` schedule is executed once at `startDate` for `duration` minutes.
 
 A `repeated` schedule is executed for each cron time specified in `repeats` for `duration` minutes.
 ```
-POST /schedule/<SCHEDULE_ID>
+POST /schedules/<SCHEDULE_ID>
 ```
 | PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
@@ -90,11 +90,11 @@ POST /schedule/<SCHEDULE_ID>
 | services | Array of service objects | true | `[{ "name":  "facebook" }, { "name":  "reddit" }]` |
 | duration | number (minutes) | true | `120` |
 | startDate | ISO String | true if type is `'one-off'` | `'2021-02-27T09:00:00.000+00:00'` |
-| repeats | Array of cron strings | true if type is `'repeated'` | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
+| repeats | Array of cron strings ([documentation](https://github.com/node-schedule/node-schedule#cron-style-scheduling)) | true if type is `'repeated'` | `[ "* * 14 * * 1", "* * 14 * * 3" ]` |
 #### Delete a schedule
 Delete a schedule for the authorized user.
 ```
-DELETE /schedule/<SCHEDULE_ID>
+DELETE /schedules/<SCHEDULE_ID>
 ```
 ### Blocked services
 #### Get blocked services
