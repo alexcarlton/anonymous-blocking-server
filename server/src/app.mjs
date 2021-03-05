@@ -3,6 +3,7 @@ import { body } from "express-validator";
 import { authMiddleware } from "./middlewares/authMiddleware.mjs";
 import { startSession } from "./handlers/sessions/startSession.mjs";
 import { stopSession } from "./handlers/sessions/stopSession.mjs";
+import { createSchedule } from "./handlers/schedules/createSchedule.mjs";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +23,8 @@ app.post(
 );
 
 app.delete("/session", stopSession);
+
+app.post("/schedules/:scheduleId", createSchedule);
 
 app.use((err) => {
   if (err) {

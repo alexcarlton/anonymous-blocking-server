@@ -27,8 +27,7 @@ describe("createSchedule", () => {
     expect(response.statusCode).toBe(200);
 
     expect(data.schedules.byUserId[userId]).toEqual({
-      ...schedule,
-      isActive: false,
+      [scheduleId]: { ...schedule, id: scheduleId },
     });
   });
 
