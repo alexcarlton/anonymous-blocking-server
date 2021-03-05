@@ -74,9 +74,5 @@ describe("createSchedule", () => {
       .set("Authorization", `Bearer ${token}`);
 
     expect(response.statusCode).toBe(409);
-
-    expect(data.schedules.byUserId[userId]).toEqual({
-      [scheduleId]: { ...schedule, id: scheduleId, isActive: false },
-    });
   });
 });
