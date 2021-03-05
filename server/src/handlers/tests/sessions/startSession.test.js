@@ -86,6 +86,4 @@ describe("startSession", () => {
       expect(data.sessions.byUserId[userId]).toBe(null);
     });
   });
-
-  it("should cancel the previous sessions scheduled end date when a new session is sent", () => {});
 });
