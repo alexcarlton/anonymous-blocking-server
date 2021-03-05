@@ -3,20 +3,28 @@ import { DateTime } from "luxon";
 import { data } from "../../data.mjs";
 import { setScheduleIsActive } from "./setScheduleIsActive.mjs";
 
-const startSchedule = ({ scheduleId, userId, startDate, duration }) => {
+const startSchedule = ({ scheduleId, userId, duration }) => {
   console.log(`Activated schedule ${scheduleId} for user ${userId}`);
 
   setScheduleIsActive({ scheduleId, userId, isActive: true });
 
-  const endDate = DateTime.fromISO(startDate)
-    .plus({ minutes: duration })
-    .toMillis();
+  const endDate = DateTime.now().plus({ minutes: duration }).toMillis();
 
   scheduler.scheduleJob(endDate, () => {
     console.log(`De-activated schedule ${scheduleId} for user ${userId}`);
 
     setScheduleIsActive({ userId, scheduleId, isActive: false });
   });
+};
+
+const processScheduleTime = ({ scheduleId, userId, start, duration }) => {
+  return scheduler.scheduleJob(start, () =>
+    startSchedule({
+      scheduleId,
+      userId,
+      duration,
+    })
+  );
 };
 
 function addSchedule({ userId, schedule }) {
@@ -30,14 +38,12 @@ function addSchedule({ userId, schedule }) {
   if (schedule.type === "one-off") {
     const startDate = DateTime.fromISO(schedule.startDate).toMillis();
 
-    return scheduler.scheduleJob(startDate, () =>
-      startSchedule({
-        scheduleId: schedule.id,
-        userId,
-        startDate: schedule.startDate,
-        duration: schedule.duration,
-      })
-    );
+    processScheduleTime({
+      scheduleId: schedule.id,
+      userId,
+      start: startDate,
+      duration: schedule.duration,
+    });
   }
 }
 
