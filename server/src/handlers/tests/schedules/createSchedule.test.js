@@ -37,7 +37,7 @@ describe("createSchedule", () => {
     const schedule = {
       name: "Morning Focus",
       type: "repeated",
-      services: ["facebook", "reddit"],
+      services: "facebook",
       duration: 120,
       repeats: ["* * 14 * * 1", "* * 14 * * 3"],
     };
