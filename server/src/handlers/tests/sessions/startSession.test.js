@@ -26,7 +26,11 @@ describe("startSession", () => {
       .set("Authorization", `Bearer ${token}`);
     expect(response.statusCode).toBe(200);
 
-    expect(data.sessions.byUserId[userId]).toEqual({ endDate, services });
+    expect(data.sessions.byUserId[userId]).toEqual({
+      endDate,
+      endSessionJob: null,
+      services,
+    });
   });
 
   it("should overwrite any existing session", async () => {
@@ -50,7 +54,11 @@ describe("startSession", () => {
 
     expect(response.statusCode).toBe(200);
 
-    expect(data.sessions.byUserId[userId]).toEqual({ endDate, services });
+    expect(data.sessions.byUserId[userId]).toEqual({
+      endDate,
+      endSessionJob: null,
+      services,
+    });
   });
 
   it("should return 400 if the request is not valid", async () => {
