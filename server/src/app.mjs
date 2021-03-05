@@ -2,6 +2,7 @@ import express from "express";
 import { body } from "express-validator";
 import { authMiddleware } from "./middlewares/authMiddleware.mjs";
 import { startSession } from "./handlers/sessions/startSession.mjs";
+import { stopSession } from "./handlers/sessions/stopSession.mjs";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +20,8 @@ app.post(
   body("services").isArray(),
   startSession
 );
+
+app.delete("/session", stopSession);
 
 app.use((err) => {
   if (err) {
