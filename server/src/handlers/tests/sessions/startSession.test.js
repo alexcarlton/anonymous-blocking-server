@@ -8,10 +8,6 @@ import { addSession } from "../../../database/queries/sessions/addSession.mjs";
 import waitForExpect from "wait-for-expect";
 
 describe("startSession", () => {
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
   const userId = "123";
 
   it("should add a session to the database", async () => {
