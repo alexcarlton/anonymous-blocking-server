@@ -1,10 +1,17 @@
 import request from "supertest";
 import jwt from "jsonwebtoken";
+import { DateTime } from "luxon";
+import MockDate from "mockdate";
 import { app } from "../../../app.mjs";
 import { data } from "../../../database/data.mjs";
 import { addSession } from "../../../database/queries/sessions/addSession.mjs";
+import waitForExpect from "wait-for-expect";
 
 describe("startSession", () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   const userId = "123";
 
   it("should add a session to the database", async () => {
@@ -59,5 +66,26 @@ describe("startSession", () => {
     expect(response.statusCode).toBe(400);
   });
 
-  it("should remove the schedule once the endDate is reached", () => {});
+  it("should end the session once the end date is reached", async () => {
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
+
+    const endDate = "2021-02-27T09:00:00.000+00:00";
+    const services = [{ name: "facebook" }, { name: "reddit" }];
+
+    const unixEndDate = DateTime.fromISO(endDate).toMillis();
+    MockDate.set(unixEndDate);
+
+    const response = await request(app)
+      .post("/session")
+      .send({ endDate, services })
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+
+    await waitForExpect(() => {
+      expect(data.sessions.byUserId[userId]).toBe(null);
+    });
+  });
+
+  it("should cancel the previous sessions scheduled end date when a new session is sent", () => {});
 });
