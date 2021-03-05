@@ -5,6 +5,7 @@ import { startSession } from "./handlers/sessions/startSession.mjs";
 import { stopSession } from "./handlers/sessions/stopSession.mjs";
 import { createSchedule } from "./handlers/schedules/createSchedule.mjs";
 import { validationMiddleware } from "./middlewares/validationMiddleware.mjs";
+import { deleteSchedule } from "./handlers/schedules/deleteSchedule.mjs";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -37,6 +38,8 @@ app.post(
   validationMiddleware,
   createSchedule
 );
+
+app.delete("/schedules/:scheduleId", deleteSchedule);
 
 app.use((err) => {
   if (err) {
