@@ -1,6 +1,6 @@
 import request from "supertest";
 import jwt from "jsonwebtoken";
-import { app } from "../app.mjs";
+import { app } from "../../app.mjs";
 
 describe("Auth", () => {
   it("should return 401 if the request is sent with no Auth token", async () => {
