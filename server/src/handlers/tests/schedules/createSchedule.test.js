@@ -27,9 +27,17 @@ describe("createSchedule", () => {
 
     expect(response.statusCode).toBe(200);
 
-    expect(data.schedules.byUserId[userId]).toEqual({
-      [scheduleId]: { ...schedule, id: scheduleId, isActive: false },
-    });
+    const scheduleFromDb = data.schedules.byUserId[userId][scheduleId];
+
+    expect(scheduleFromDb.id).toEqual(scheduleId);
+    expect(scheduleFromDb.isActive).toEqual(false);
+    expect(Array.isArray(scheduleFromDb.jobs)).toBe(true);
+
+    expect(scheduleFromDb.name).toEqual(schedule.name);
+    expect(scheduleFromDb.type).toEqual(schedule.type);
+    expect(scheduleFromDb.services).toEqual(schedule.services);
+    expect(scheduleFromDb.duration).toEqual(schedule.duration);
+    expect(scheduleFromDb.repeats).toEqual(schedule.repeats);
   });
 
   it("should return a 400 if the request is not valid", async () => {
