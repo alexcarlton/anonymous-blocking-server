@@ -18,6 +18,7 @@ const startSchedule = ({ scheduleId, userId, duration }) => {
 };
 
 const processScheduleTime = ({ scheduleId, userId, start, duration }) => {
+  console.log("process", scheduleId, userId, start, duration);
   return scheduler.scheduleJob(start, () =>
     startSchedule({
       scheduleId,
@@ -38,13 +39,22 @@ function addSchedule({ userId, schedule }) {
   if (schedule.type === "one-off") {
     const startDate = DateTime.fromISO(schedule.startDate).toMillis();
 
-    processScheduleTime({
+    return processScheduleTime({
       scheduleId: schedule.id,
       userId,
       start: startDate,
       duration: schedule.duration,
     });
   }
+
+  return schedule.repeats.map((repeat) =>
+    processScheduleTime({
+      scheduleId: schedule.id,
+      userId,
+      start: repeat,
+      duration: schedule.duration,
+    })
+  );
 }
 
 export { addSchedule };
