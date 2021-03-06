@@ -2,8 +2,13 @@ import jwt from "jsonwebtoken";
 import { addSchedule } from "../../../database/queries/schedules/addSchedule.mjs";
 import request from "supertest";
 import { app } from "../../../app.mjs";
+import { resetData } from "../../../database/data.mjs";
 
 describe("getSchedules", () => {
+  beforeEach(() => {
+    resetData();
+  });
+
   const userId = "123";
 
   it("gets all schedules for the user", async () => {
