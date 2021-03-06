@@ -8,4 +8,4 @@ const httpServer = http.createServer(app);
 
 setupSocketServer(httpServer);
 
-httpServer.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+httpServer.listen(PORT, () => console.info(`Listening on port: ${PORT}`));

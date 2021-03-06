@@ -22,7 +22,7 @@ function authMiddleware(req, res, next) {
 
     return next();
   } catch (error) {
-    console.log("error", error);
+    console.error("error", error);
 
     return res.status(401).send();
   }
