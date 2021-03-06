@@ -81,7 +81,7 @@ A schedule can be of type `one-off` or `repeated`.
 
 A `one-off` schedule is executed once at `startDate` for `duration` minutes.
 
-A `repeated` schedule is executed for each cron time specified in `repeats` for `duration` minutes.
+A `repeated` schedule is executed for each cron time specified in `repeats`, for `duration` minutes.
 ```
 POST /schedules/<SCHEDULE_ID>
 ```
@@ -111,6 +111,7 @@ GET /blocked
     "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
     "blocker": {
       "type": "schedule",
+      "id": "123"
     }
   }
 }
@@ -129,7 +130,7 @@ DATA {
         services: [{ name:  "facebook" }, { name:  "reddit" }]
         blocker: {
             type: 'schedule', 
-            id: 123
+            id: "123
         }
     }
 }

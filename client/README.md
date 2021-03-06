@@ -1,11 +1,14 @@
-# Anonymous Blocking Task
+# Anonymous Blocking Task Client
 ## Requirements
-- Node version >=14 ([install via NVM](https://github.com/nvm-sh/nvm))
+- Node version 14.16.0 ([install via NVM](https://github.com/nvm-sh/nvm))
 - [NPM](https://www.npmjs.com/)
 ## Getting Started
 ### Setup
-- Duplicate the `.env.local.example` file into a new `.env.local` file
+From the `anonymous-blocking-task/client/` directory:
+- Install Node version 14.16.0 with `nvm install v14.16.0`
+- Use Node version 14.16.0 with `nvm use v14.16.0`
+- Duplicate the `.env.example.local` file into a new `.env.local` file
+- Install dependencies with `npm install`
 ### Running
 From the `anonymous-blocking-task/client/` directory, run:
-- `npm install`
 - `npm start`
