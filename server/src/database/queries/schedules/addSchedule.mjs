@@ -6,14 +6,14 @@ import { addJobToSchedule } from "./addJobToSchedule.mjs";
 import { emitBlockedServices } from "../../../socketServer/emitBlockedServices.mjs";
 
 const startSchedule = ({ scheduleId, userId, duration }) => {
-  console.log(`Activated schedule ${scheduleId} for user ${userId}`);
+  console.info(`Activated schedule ${scheduleId} for user ${userId}`);
 
   setScheduleIsActive({ scheduleId, userId, isActive: true });
 
   const endDate = DateTime.now().plus({ minutes: duration }).toMillis();
 
   const deactivateScheduleJob = scheduler.scheduleJob(endDate, () => {
-    console.log(`De-activated schedule ${scheduleId} for user ${userId}`);
+    console.info(`De-activated schedule ${scheduleId} for user ${userId}`);
 
     setScheduleIsActive({ userId, scheduleId, isActive: false });
 

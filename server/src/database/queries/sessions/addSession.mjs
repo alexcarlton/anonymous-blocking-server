@@ -20,7 +20,7 @@ function addSession({ userId, session }) {
     const date = new Date(parsedDate);
 
     endSessionJob = schedule.scheduleJob(date, () => {
-      console.log(`Ended session for user ${userId}`);
+      console.info(`Ended session for user ${userId}`);
 
       data.sessions.byUserId[userId] = null;
 
