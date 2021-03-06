@@ -1,4 +1,4 @@
-# Anonymous Blocking Task
+# Anonymous Blocking Task Server
 ## Requirements
 - Node version 14.16.0 ([install via NVM](https://github.com/nvm-sh/nvm))
 - [NPM](https://www.npmjs.com/)
@@ -13,6 +13,8 @@ From the `anonymous-blocking-task/server/` directory:
 From the `anonymous-blocking-task/server/` directory, run:
 - `npm start`
 ### Making Requests
+To get started SUPER quickly 🚀, the codebase includes a [POSTMAN Collection with all the requests ready to rock 🤘](Anonymous-Blocking.postman_collection.json)
+
 The documentation for the API can be found in the [DOCS.md file](DOCS.md).
 
 The following JWT token can be used to make authorised requests (as long as the JWT_SECRET in `.env` is the same as `.env.example`):
