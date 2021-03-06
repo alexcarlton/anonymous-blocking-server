@@ -12,4 +12,4 @@ From the `anonymous-blocking-task/client/` directory:
 - Install dependencies with `npm install`
 ### Running
 From the `anonymous-blocking-task/client/` directory, run:
-- `npm start`
+- `npm start` then navigate to `http://localhost:3000` to see the served webapp
