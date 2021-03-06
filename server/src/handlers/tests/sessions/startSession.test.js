@@ -64,7 +64,7 @@ describe("startSession", () => {
   it("should return 400 if the request is not valid", async () => {
     const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
 
-    const incorrectServices = ["facebook", "netflix"];
+    const incorrectServices = "facebook, reddit";
 
     const response = await request(app)
       .post("/session")
