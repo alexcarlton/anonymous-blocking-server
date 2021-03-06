@@ -8,11 +8,8 @@ function App() {
     io("ws://localhost:8080", {
       reconnectionDelayMax: 10000,
       auth: {
-        token: "123"
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMyIsImlhdCI6MTYxNDUxMDkwNH0.iHJfC1k01HK9-DqGNyZReiGC6uHkmXghBivELtBxTgQ"
       },
-      query: {
-        "my-key": "my-value"
-      }
     })
   }, [])
 
