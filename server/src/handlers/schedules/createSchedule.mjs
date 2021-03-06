@@ -8,12 +8,18 @@ function createSchedule(req, res) {
   const schedule = { ...req.body, id };
 
   if (getSchedule({ userId, scheduleId: id })) {
-    return res.status(409).send(`Schedule with ID ${id} already exists.`);
+    const message = `Schedule with ID ${id} already exists.`;
+
+    console.info(message);
+
+    return res.status(409).send(message);
   }
 
   addSchedule({ userId, schedule });
 
-  res.send();
+  console.info(`Created schedule ${id} for user ${userId}`);
+
+  return res.send();
 }
 
 export { createSchedule };
