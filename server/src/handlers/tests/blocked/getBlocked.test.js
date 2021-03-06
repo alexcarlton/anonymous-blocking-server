@@ -25,7 +25,7 @@ describe("getBlocked", () => {
     });
   });
 
-  it("should return a session one is running, and no schedules are running", async () => {
+  it("should return a session if one is running, and no schedules are running", async () => {
     const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
 
     const session = {
