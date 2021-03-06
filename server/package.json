@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -r dotenv/config src/server.mjs",
+    "start": "node -r dotenv/config src/server.mjs",
     "test": "jest"
   },
   "repository": {

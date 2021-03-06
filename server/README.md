@@ -1,14 +1,17 @@
 # Anonymous Blocking Task
 ## Requirements
-- Node version >=14 ([install via NVM](https://github.com/nvm-sh/nvm))
+- Node version 14.16.0 ([install via NVM](https://github.com/nvm-sh/nvm))
 - [NPM](https://www.npmjs.com/)
 ## Getting Started
 ### Setup
+From the `anonymous-blocking-task/server/` directory:
+- Install Node version 14.16.0 with `nvm install v14.16.0`
+- Use Node version 14.16.0 with `nvm use v14.16.0`
 - Duplicate the `.env.example` file into a new `.env` file
+- Install dependencies with `npm install`
 ### Running
 From the `anonymous-blocking-task/server/` directory, run:
-- `npm install`
-- `npm run dev`
+- `npm start`
 ### Making Requests
 The documentation for the API can be found in the [DOCS.md file](DOCS.md).
 
