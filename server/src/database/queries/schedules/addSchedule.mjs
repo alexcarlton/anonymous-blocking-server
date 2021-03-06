@@ -3,6 +3,7 @@ import { DateTime } from "luxon";
 import { data } from "../../data.mjs";
 import { setScheduleIsActive } from "./setScheduleIsActive.mjs";
 import { addJobToSchedule } from "./addJobToSchedule.mjs";
+import { emitBlockedServices } from "../../../socketServer/emitBlockedServices.mjs";
 
 const startSchedule = ({ scheduleId, userId, duration }) => {
   console.log(`Activated schedule ${scheduleId} for user ${userId}`);
@@ -15,9 +16,13 @@ const startSchedule = ({ scheduleId, userId, duration }) => {
     console.log(`De-activated schedule ${scheduleId} for user ${userId}`);
 
     setScheduleIsActive({ userId, scheduleId, isActive: false });
+
+    emitBlockedServices({ userId });
   });
 
-  return addJobToSchedule({ userId, scheduleId, job: deactivateScheduleJob });
+  addJobToSchedule({ userId, scheduleId, job: deactivateScheduleJob });
+
+  emitBlockedServices({ userId });
 };
 
 const processScheduleTime = ({ scheduleId, userId, start, duration }) => {
