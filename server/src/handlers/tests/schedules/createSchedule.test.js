@@ -4,6 +4,8 @@ import { app } from "../../../app.mjs";
 import { data, resetData } from "../../../database/data.mjs";
 import { addSchedule } from "../../../database/queries/schedules/addSchedule.mjs";
 
+jest.mock("../../../socketServer/emitBlockedServices.mjs");
+
 describe("createSchedule", () => {
   beforeEach(() => {
     resetData();

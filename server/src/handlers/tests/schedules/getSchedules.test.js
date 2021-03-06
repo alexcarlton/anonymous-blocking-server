@@ -4,6 +4,8 @@ import request from "supertest";
 import { app } from "../../../app.mjs";
 import { resetData } from "../../../database/data.mjs";
 
+jest.mock("../../../socketServer/emitBlockedServices.mjs");
+
 describe("getSchedules", () => {
   beforeEach(() => {
     resetData();

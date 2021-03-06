@@ -4,6 +4,8 @@ import { addSession } from "../../../database/queries/sessions/addSession.mjs";
 import { app } from "../../../app.mjs";
 import { data, resetData } from "../../../database/data.mjs";
 
+jest.mock("../../../socketServer/emitBlockedServices.mjs");
+
 const userId = "123";
 
 describe("stopSession", () => {

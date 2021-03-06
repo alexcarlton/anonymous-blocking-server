@@ -7,6 +7,8 @@ import { data, resetData } from "../../../database/data.mjs";
 import { addSession } from "../../../database/queries/sessions/addSession.mjs";
 import waitForExpect from "wait-for-expect";
 
+jest.mock("../../../socketServer/emitBlockedServices.mjs");
+
 describe("startSession", () => {
   beforeEach(() => {
     resetData();

@@ -5,6 +5,8 @@ import { app } from "../../../app.mjs";
 import { addSession } from "../../../database/queries/sessions/addSession.mjs";
 import { setScheduleIsActive } from "../../../database/queries/schedules/setScheduleIsActive.mjs";
 
+jest.mock("../../../socketServer/emitBlockedServices.mjs");
+
 describe("getBlocked", () => {
   const userId = "123";
 
