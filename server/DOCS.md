@@ -26,7 +26,7 @@ Starting a new session whilst an existing session is running will stop the runni
 ```
 POST /session
 ```
-| PARAMETER | TYPE | REQUIRED | EXAMPLE |
+| BODY PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
 | endDate | ISO string | false | `'2021-02-27T09:00:00.000+00:00'` |
 | services | Array of service objects | true | `[{ "name":  "facebook" }, { "name":  "reddit" }]` |
@@ -85,7 +85,7 @@ A `repeated` schedule is executed for each cron time specified in `repeats` for 
 ```
 POST /schedules/<SCHEDULE_ID>
 ```
-| PARAMETER | TYPE | REQUIRED | EXAMPLE |
+| BODY PARAMETER | TYPE | REQUIRED | EXAMPLE |
 |---|---|---|---|
 | name | string | true | `'Morning Focus'` |
 | type | string | true | Either `'one-off'` OR `'repeated'` |
@@ -111,7 +111,6 @@ GET /blocked
     "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
     "blocker": {
       "type": "schedule",
-      "id": 123
     }
   }
 }
