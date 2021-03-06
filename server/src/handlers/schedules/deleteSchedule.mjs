@@ -6,7 +6,7 @@ function deleteSchedule(req, res) {
   const id = req.params.scheduleId;
 
   if (!getSchedule({ userId, scheduleId: id })) {
-    return res.status(404).send();
+    return res.status(404).send(`No schedule found with ID ${id}`);
   }
 
   removeSchedule({ userId, scheduleId: id });
