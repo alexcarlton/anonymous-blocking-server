@@ -12,7 +12,8 @@ ul {
 }
 
 p {
-    margin: 0;
+    font-size: 1.5rem;
+    margin: 10px;
 }
 
 
@@ -20,7 +21,6 @@ p {
     width: 500px;
 
     border-radius: 10px;
-    border: solid 1px #525B76;
 
     padding: 10px;
 
@@ -29,18 +29,15 @@ p {
     align-items: center;
     justify-content: center;
 
-    background-color: #201E50;
-    color: #C4F1BE;
+    background-color: #9c32e0;
+    color: white;
 
     -webkit-box-shadow: 5px 5px 15px -11px #000000;
     box-shadow: 5px 5px 15px -11px #000000;
 }
 
 .blocked-widget.not-blocked {
-    background-color: #C4F1BE;
-
-    color: #a2c3a4;
-
-    border-color: #a2c3a4;
+    background-color: #3b9edf;
+    color: white;
 }
 

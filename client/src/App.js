@@ -15,10 +15,7 @@ const BlockedWidget = ({isBlocked, loading, blockedServices, blockerType}) => {
       <div className="blocked-widget">
         <h1>Currently blocking</h1>
         <p>Blocked by: {blockerType}</p>
-        <h2>Blocked services</h2>
-        <ul>
-          {blockedServices.map(({name}) => <li key={name}>{name}</li>)}
-        </ul>
+        <p>Blocked services: {blockedServices.map(({name}) => name).join(', ')}</p>
       </div>
     )
   }
