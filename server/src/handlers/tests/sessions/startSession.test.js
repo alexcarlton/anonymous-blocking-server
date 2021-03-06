@@ -3,11 +3,15 @@ import jwt from "jsonwebtoken";
 import { DateTime } from "luxon";
 import MockDate from "mockdate";
 import { app } from "../../../app.mjs";
-import { data } from "../../../database/data.mjs";
+import { data, resetData } from "../../../database/data.mjs";
 import { addSession } from "../../../database/queries/sessions/addSession.mjs";
 import waitForExpect from "wait-for-expect";
 
 describe("startSession", () => {
+  beforeEach(() => {
+    resetData();
+  });
+
   const userId = "123";
 
   it("should add a session to the database", async () => {

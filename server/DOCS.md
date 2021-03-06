@@ -54,7 +54,8 @@ GET /schedules
         "type": "one-off",
         "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
         "startDate": "2021-02-27T09:00:00.000+00:00",
-        "duration": 120
+        "duration": 120,
+        "isActive": false
       },
       {
         "id": "456",
@@ -66,7 +67,8 @@ GET /schedules
           "* * 14 * * 1",
           "* * 14 * * 3",
           "* * 14 * * 5"
-        ]
+        ],
+        "isActive": false
       }
     ]
   }

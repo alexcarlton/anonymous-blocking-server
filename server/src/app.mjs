@@ -6,6 +6,7 @@ import { stopSession } from "./handlers/sessions/stopSession.mjs";
 import { createSchedule } from "./handlers/schedules/createSchedule.mjs";
 import { validationMiddleware } from "./middlewares/validationMiddleware.mjs";
 import { deleteSchedule } from "./handlers/schedules/deleteSchedule.mjs";
+import { getSchedules } from "./handlers/schedules/getSchedules.mjs";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -40,6 +41,8 @@ app.post(
 );
 
 app.delete("/schedules/:scheduleId", deleteSchedule);
+
+app.get("/schedules", getSchedules);
 
 app.use((err) => {
   if (err) {

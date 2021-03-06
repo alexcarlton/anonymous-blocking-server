@@ -1,10 +1,14 @@
 import jwt from "jsonwebtoken";
 import request from "supertest";
 import { app } from "../../../app.mjs";
-import { data } from "../../../database/data.mjs";
+import { data, resetData } from "../../../database/data.mjs";
 import { addSchedule } from "../../../database/queries/schedules/addSchedule.mjs";
 
 describe("createSchedule", () => {
+  beforeEach(() => {
+    resetData();
+  });
+
   const userId = "123";
 
   it("should add a schedule to the database", async () => {

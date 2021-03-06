@@ -2,11 +2,15 @@ import jwt from "jsonwebtoken";
 import request from "supertest";
 import { addSession } from "../../../database/queries/sessions/addSession.mjs";
 import { app } from "../../../app.mjs";
-import { data } from "../../../database/data.mjs";
+import { data, resetData } from "../../../database/data.mjs";
 
 const userId = "123";
 
 describe("stopSession", () => {
+  beforeEach(() => {
+    resetData();
+  });
+
   it("should remove the session from the database", async () => {
     addSession({
       userId,
