@@ -1,7 +1,18 @@
+import { useEffect } from 'react'
+import io from 'socket.io-client'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    io("ws://localhost:8080", {
+      reconnectionDelayMax: 10000,
+      auth: {
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMyIsImlhdCI6MTYxNDUxMDkwNH0.iHJfC1k01HK9-DqGNyZReiGC6uHkmXghBivELtBxTgQ"
+      },
+    })
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
