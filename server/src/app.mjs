@@ -49,7 +49,7 @@ app.get("/blocked", getBlocked);
 
 app.use((err) => {
   if (err) {
-    console.error(err);
+    console.info(err);
   }
 });
 
