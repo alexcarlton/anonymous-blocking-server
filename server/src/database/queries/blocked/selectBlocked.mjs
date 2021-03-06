@@ -20,6 +20,18 @@ function selectBlocked({ userId }) {
     };
   }
 
+  if (runningSchedule) {
+    return {
+      data: {
+        blocker: {
+          type: "schedule",
+          id: runningSchedule.id,
+        },
+        services: runningSchedule.services,
+      },
+    };
+  }
+
   if (runningSession) {
     return {
       data: {
