@@ -111,7 +111,6 @@ GET /blocked
     "services": [{ "name":  "facebook" }, { "name":  "reddit" }],
     "blocker": {
       "type": "schedule",
-      "id": 123
     }
   }
 }
