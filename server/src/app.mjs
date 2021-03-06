@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 app.post(
   "/session",
-  body("endDate").isISO8601(),
+  body("endDate").optional().isISO8601(),
   body("services").isArray(),
   validationMiddleware,
   startSession
