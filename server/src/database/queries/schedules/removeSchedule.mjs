@@ -1,4 +1,5 @@
 import { data } from "../../data.mjs";
+import { emitBlockedServices } from "../../../socketServer/emitBlockedServices.mjs";
 
 function removeSchedule({ userId, scheduleId }) {
   const schedule = data.schedules.byUserId[userId][scheduleId];
@@ -8,6 +9,8 @@ function removeSchedule({ userId, scheduleId }) {
   });
 
   delete data.schedules.byUserId[userId][scheduleId];
+
+  emitBlockedServices({ userId });
 }
 
 export { removeSchedule };
