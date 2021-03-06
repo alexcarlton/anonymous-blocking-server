@@ -1,4 +1,5 @@
 # Anonymous Blocking Task Client
+This is a basic React client bootstrapped with `create-react-app`, setup to receive and display blocking data from the server via websockets.
 ## Requirements
 - Node version 14.16.0 ([install via NVM](https://github.com/nvm-sh/nvm))
 - [NPM](https://www.npmjs.com/)
