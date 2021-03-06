@@ -1,5 +1,6 @@
 import { Server } from "socket.io";
 import jwt from "jsonwebtoken";
+import { selectBlocked } from "./database/queries/blocked/selectBlocked.mjs";
 
 function setupSocketServer(httpServer) {
   const io = new Server(httpServer, {
@@ -38,6 +39,12 @@ function setupSocketServer(httpServer) {
     socket.join(userId);
 
     console.info(`Client joined and added to room: ${userId}`);
+
+    socket.emit("blocked-services", selectBlocked({ userId }));
+
+    console.info(
+      `Emitted blocked-services for user ${userId} to socket client ${socket.id} after initial connection`
+    );
   });
 }
 

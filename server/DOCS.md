@@ -117,22 +117,20 @@ GET /blocked
 ```
 ## Socket API
 ### Emitted Messages
-#### Blocking started
-Message emitted when blocking is started via either a session or a schedule.
+#### Blocked services
+Message emitted when the client connects to the socket server, or the blocked state is updated (eg. a schedule/session starts/stops).
+
+The response matches the `GET /blocked` REST API response.
 ##### Example Message
 ```
-MESSAGE 'blocking-started'
+MESSAGE 'blocked-services'
 DATA { 
-    blocker: {
-        type: 'session', 
-        id: 123
+    data: {
+        services: [{ name:  "facebook" }, { name:  "reddit" }]
+        blocker: {
+            type: 'schedule', 
+            id: 123
+        }
     }
-    services: [{ name:  "facebook" }, { name:  "reddit" }]
 }
-```
-#### Blocking ended
-Message emitted when blocking is ended manually or via a schedule.
-##### Example Message
-```
-MESSAGE 'blocking-ended'
 ```
