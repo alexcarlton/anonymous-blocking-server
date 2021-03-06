@@ -23,6 +23,8 @@ function addSession({ userId, session }) {
       console.log(`Ended session for user ${userId}`);
 
       data.sessions.byUserId[userId] = null;
+
+      emitBlockedServices({ userId });
     });
   }
 
