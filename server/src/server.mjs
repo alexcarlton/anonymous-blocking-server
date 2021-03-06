@@ -1,6 +1,6 @@
 import { app } from "./app.mjs";
 import http from "http";
-import { setupSocketServer } from "./setupSocketServer.mjs";
+import { setupSocketServer } from "./socketServer/setupSocketServer.mjs";
 
 const PORT = 8080;
 

@@ -1,9 +1,11 @@
 import { Server } from "socket.io";
 import jwt from "jsonwebtoken";
-import { selectBlocked } from "./database/queries/blocked/selectBlocked.mjs";
+import { selectBlocked } from "../database/queries/blocked/selectBlocked.mjs";
+
+let io = null;
 
 function setupSocketServer(httpServer) {
-  const io = new Server(httpServer, {
+  io = new Server(httpServer, {
     cors: {
       origin: process.env.CLIENT_URL,
       methods: ["GET", "POST"],
@@ -48,4 +50,4 @@ function setupSocketServer(httpServer) {
   });
 }
 
-export { setupSocketServer };
+export { setupSocketServer, io };
