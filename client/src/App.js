@@ -1,30 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
 import {useBlockedServices} from "./useBlockedServices.js";
 
-const BlockedWidget = ({ isBlocked, loading }) => {
+const BlockedWidget = ({isBlocked, loading, blockedServices, blockerType}) => {
   if (loading) {
-    return <p>🕰 Loading...</p>
-
-  }
-  if (!isBlocked) {
     return (
-      <div>
-        No blocking in place
+      <div className="blocked-widget">
+        <h1>Loading...</h1>
       </div>
     )
-
   }
 
-  return <div>Blocking in place!</div>
+  if (isBlocked) {
+    return (
+      <div className="blocked-widget">
+        <h1>Currently blocking</h1>
+        <p>Blocked by: {blockerType}</p>
+        <h2>Blocked services</h2>
+        <ul>
+          {blockedServices.map(({name}) => <li key={name}>{name}</li>)}
+        </ul>
+      </div>
+    )
+  }
+
+  return (
+    <div className="blocked-widget not-blocked">
+      <h1>Not currently blocking</h1>
+    </div>
+  )
 }
 
 function App() {
   const blockedServices = useBlockedServices()
 
   return (
-    <div className="App">
-      <BlockedWidget loading={!blockedServices} isBlocked={blockedServices?.blocker} />
+    <div>
+      <BlockedWidget
+        loading={!blockedServices}
+        isBlocked={blockedServices?.blocker}
+        blockerType={blockedServices?.blocker?.type}
+        blockedServices={blockedServices?.services}
+      />
     </div>
   );
 }
