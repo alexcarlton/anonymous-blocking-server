@@ -11,15 +11,6 @@ function selectBlocked({ userId }) {
   const runningSession = getSession({ userId });
   const runningSchedule = getRunningSchedule({ userId });
 
-  if (!runningSchedule && !runningSession) {
-    return {
-      data: {
-        blocker: null,
-        services: [],
-      },
-    };
-  }
-
   if (runningSchedule) {
     return {
       data: {
@@ -42,6 +33,13 @@ function selectBlocked({ userId }) {
       },
     };
   }
+
+  return {
+    data: {
+      blocker: null,
+      services: [],
+    },
+  };
 }
 
 export { selectBlocked };
