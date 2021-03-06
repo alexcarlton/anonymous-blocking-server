@@ -47,5 +47,19 @@ describe("getSchedules", () => {
     });
   });
 
-  it("should return an empty array if the user has no schedules", () => {});
+  it("should return an empty array if the user has no schedules", async () => {
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
+
+    const response = await request(app)
+      .get(`/schedules`)
+      .set("Authorization", `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+
+    expect(response.body).toEqual({
+      data: {
+        schedules: [],
+      },
+    });
+  });
 });
